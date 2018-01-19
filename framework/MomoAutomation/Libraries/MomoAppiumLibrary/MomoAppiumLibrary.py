@@ -10,8 +10,6 @@ class MomoAppiumLibrary(object):
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = '1.0.0'
     
-    
-
     def __init__(self):
         print 'Initializing...'
         self._LOCATOR_STRATEGIES = {
@@ -35,14 +33,10 @@ class MomoAppiumLibrary(object):
                                     }
                 
         
-        
-        
-    def start_appium_driver(self, host='127.0.0.1', port='4723', desired_capabilities=None, implicit_wait=False, implicit_wait_time=10):
+    def start_appium_driver(self, host='127.0.0.1', port='4723', desired_capabilities=None):
         url = 'http://' + host + ':' + port + '/wd/hub'
         self.driver = webdriver.Remote(url, desired_capabilities)
-        self.implicit_wait = implicit_wait
-        self.implicit_wait_time = implicit_wait_time
-
+    
     def get_page_source(self):
         return self.driver.page_source
 
@@ -70,15 +64,8 @@ class MomoAppiumLibrary(object):
     def wait_for_element(self, locator, time_out=30):
         by, locatorVal = self._parse_locator(locator)
         WebDriverWait(self.driver, time_out).until(expected_conditions.presence_of_element_located((by, locatorVal)))
-           
+                      
     def _findElement(self, locator):
-        if(self.implicit_wait):
-            return self._findElementWithWait(locator, self.implicit_wait_time)
-        else:
-            return self._findElementNoWait(locator)
-        
-           
-    def _findElementNoWait(self, locator):
         if type(locator) is str or type(locator) is unicode:
             by, locatorVal = self._parse_locator(locator)
             return self.driver.find_element(by, locatorVal)
@@ -86,16 +73,6 @@ class MomoAppiumLibrary(object):
             raise RuntimeError('Find element from WebElement has not been supported.')     
         else:
             raise RuntimeError('Locator should be String or WebElement') 
-        
-    def _findElementWithWait(self, locator, time_out):
-        if type(locator) is str or type(locator) is unicode:
-            self.wait_for_element(locator, time_out)    
-            by, locatorVal = self._parse_locator(locator)
-            return self.driver.find_element(by, locatorVal)
-        elif type(locator) is WebElement:
-            raise RuntimeError('Find element from WebElement has not been supported.')     
-        else:
-            raise RuntimeError('Locator should be String or WebElement')     
 
     def _parse_locator(self, locator):
         '''Detect if this is an explicit locator strategy in form of locator_strategy : value'''
