@@ -1,0 +1,2 @@
+*** Settings ***
+Resource          ${ENGINE}/{PLATFORM}/Welcome_Screen.txt

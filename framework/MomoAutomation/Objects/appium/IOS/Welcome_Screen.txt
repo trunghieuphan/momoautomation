@@ -1,0 +1,5 @@
+*** Variables ***
+${BUTTON_KHAM_PHA_NGAY}    XPATH://XCUIElementTypeOther[@name=" Khám phá ngay"]
+${BUTTON_TIEP_TUC}    XPATH://XCUIElementTypeOther[@name=" Tiếp tục"]
+${BUTTON_BAT_DAU_NGAY}    XPATH://XCUIElementTypeOther[@name=" Bắt đầu ngay"]
+${BUTTON_ALLOW_SEND_NOTI}    XPATH://XCUIElementTypeButton[@name="Allow"]

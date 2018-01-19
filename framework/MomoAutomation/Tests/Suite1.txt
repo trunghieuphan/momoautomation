@@ -1,0 +1,21 @@
+*** Settings ***
+Suite Setup       Start Appium Driver    desired_capabilities=${DESIRED_CAPABILITIES}    implicit_wait=True
+Suite Teardown    Stop Appium Driver
+Library           ../Libraries/MomoAppiumLibrary/MomoAppiumLibrary.py
+Resource          ../Data/EXECUTION_INFO.txt
+Resource          ../Data/OBJECT_LOCATORS.txt
+Resource          ../Resources/apps/APPS_PATH.txt
+
+*** Test Cases ***
+Login
+    Tap    ${BUTTON_KHAM_PHA_NGAY}
+    Tap    ${BUTTON_TIEP_TUC}
+    Tap    ${BUTTON_TIEP_TUC}
+    Tap    ${BUTTON_TIEP_TUC}
+    Tap    ${BUTTON_TIEP_TUC}
+    Tap    ${BUTTON_TIEP_TUC}
+    Tap    ${BUTTON_BAT_DAU_NGAY}
+    Tap    ${BUTTON_ALLOW_SEND_NOTI}
+    Enter Text    ${TXT_NHAP_SO_DT}    0919572109
+    Tap    ${BUTTON_TIEP_TUC_}
+    Tap    ${BUTTON_TIEP_TUC_}
