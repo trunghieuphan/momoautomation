@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Start Appium Driver    desired_capabilities=${DESIRED_CAPABILITIES}    implicit_wait=True
+Suite Setup       Start Appium Driver    desired_capabilities=${DESIRED_CAPABILITIES}
 Suite Teardown    Stop Appium Driver
 Library           ../Libraries/MomoAppiumLibrary/MomoAppiumLibrary.py
 Resource          ../Data/EXECUTION_INFO.txt
@@ -8,14 +8,20 @@ Resource          ../Resources/apps/APPS_PATH.txt
 
 *** Test Cases ***
 Login
+    Wait For Element    ${BUTTON_KHAM_PHA_NGAY}
     Tap    ${BUTTON_KHAM_PHA_NGAY}
+    Wait For Element    ${BUTTON_TIEP_TUC}
     Tap    ${BUTTON_TIEP_TUC}
     Tap    ${BUTTON_TIEP_TUC}
     Tap    ${BUTTON_TIEP_TUC}
     Tap    ${BUTTON_TIEP_TUC}
     Tap    ${BUTTON_TIEP_TUC}
+    Wait For Element    ${BUTTON_BAT_DAU_NGAY}
     Tap    ${BUTTON_BAT_DAU_NGAY}
     Tap    ${BUTTON_ALLOW_SEND_NOTI}
+    Wait For Element    ${TXT_NHAP_SO_DT}
     Enter Text    ${TXT_NHAP_SO_DT}    0919572109
-    Tap    ${BUTTON_TIEP_TUC_}
-    Tap    ${BUTTON_TIEP_TUC_}
+    Wait For Element    ${BUTTON_LOGIN_TIEP_TUC}
+    Tap    ${BUTTON_LOGIN_TIEP_TUC}
+    Tap    ${BUTTON_VRF_CODE_TIEP_TUC}
+    Sleep    10

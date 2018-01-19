@@ -1,3 +1,4 @@
 *** Variables ***
 ${TXT_NHAP_SO_DT}    XPATH://XCUIElementTypeTextField
-${BUTTON_TIEP_TUC_}    XPATH://XCUIElementTypeButton[@name="TIẾP TỤC"]
+${BUTTON_LOGIN_TIEP_TUC}    XPATH://XCUIElementTypeButton[@name="TIẾP TỤC"]
+${BUTTON_VRF_CODE_TIEP_TUC}    XPATH://XCUIElementTypeButton[@name="TIẾP TỤC"]
