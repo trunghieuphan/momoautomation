@@ -36,7 +36,7 @@ class MomoAppiumLibrary(object):
                                     }
                 
         
-    def start_appium_driver(self, host='127.0.0.1', port='4723', desired_capabilities=None, implicit_wait=False, implicit_wait_time=10):
+    def start_driver(self, host='127.0.0.1', port='4723', desired_capabilities=None, implicit_wait=False, implicit_wait_time=10):
         url = 'http://' + host + ':' + port + '/wd/hub'
         self.driver = webdriver.Remote(url, desired_capabilities)
         self.implicit_wait = implicit_wait
@@ -45,7 +45,7 @@ class MomoAppiumLibrary(object):
     def get_page_source(self):
         return self.driver.page_source
 
-    def stop_appium_driver(self):
+    def stop_driver(self):
         self.driver.quit()
 
     def tap(self, locator, wait_time=None):    

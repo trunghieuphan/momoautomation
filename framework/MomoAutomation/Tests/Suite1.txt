@@ -1,6 +1,6 @@
 *** Settings ***
-Suite Setup       Start Appium Driver    desired_capabilities=${DESIRED_CAPABILITIES}
-Suite Teardown    Stop Appium Driver
+Suite Setup       Start Driver    desired_capabilities=${DESIRED_CAPABILITIES}    implicit_wait=True
+Suite Teardown    Stop Driver
 Library           ../Libraries/MomoAppiumLibrary/MomoAppiumLibrary.py
 Resource          ../Data/EXECUTION_INFO.txt
 Resource          ../Data/OBJECT_LOCATORS.txt
@@ -9,8 +9,13 @@ Resource          ../Keywords/Common_Keywords.txt
 
 *** Test Cases ***
 Login
-    Tap    ${BUTTON_KHAM_PHA_NGAY}    10
+    Comment    Click button "Khám phá ngay"
+    Tap    ${BUTTON_KHAM_PHA_NGAY}
+    Comment    Click "Tiếp tục" 5 lần để lướt qua các màn hình giới thiệu
     Tap On Element N Times    ${BUTTON_TIEP_TUC}    5
-    Tap    ${BUTTON_BAT_DAU_NGAY}    10
-    Tap    ${BUTTON_ALLOW_SEND_NOTI}    10
+    Comment    Click "Bắt đầu ngay" để vào màn hình đăng nhập
+    Tap    ${BUTTON_BAT_DAU_NGAY}
+    Comment    Xác nhận đồng ý cho phép gửi notification
+    Tap    ${BUTTON_ALLOW_SEND_NOTI}
+    Comment    Thực hiện login bằng một số đt
     Login With Phone Number    0919572109

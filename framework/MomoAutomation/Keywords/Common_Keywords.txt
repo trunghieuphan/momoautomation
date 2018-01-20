@@ -6,7 +6,7 @@ Tap On Element N Times
 
 Login With Phone Number
     [Arguments]    ${PHONE_NUMBER}
-    Enter Text    ${TXT_NHAP_SO_DT}    ${PHONE_NUMBER}    wait_time=10
-    Tap    ${BUTTON_LOGIN_TIEP_TUC}    wait_time=10
-    Tap    ${BUTTON_VRF_CODE_TIEP_TUC}    wait_time=10
+    Enter Text    ${TXT_NHAP_SO_DT}    ${PHONE_NUMBER}
+    Tap    ${BUTTON_LOGIN_TIEP_TUC}
+    Tap    ${BUTTON_VRF_CODE_TIEP_TUC}
     Wait For Element    ${LABEL_CONFIRM_VRF_CODE_SEND}
