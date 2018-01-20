@@ -1,3 +1,5 @@
 *** Variables ***
-${TXT_NHAP_SO_DT}    XPATH://XCUIElementTypeTextField
-${BUTTON_TIEP_TUC_}    XPATH://XCUIElementTypeButton[@name="TIẾP TỤC"]
+${TXT_NHAP_SO_DT}    XPATH://android.widget.EditText[@text="Nhập số điện thoại"]
+${BUTTON_LOGIN_TIEP_TUC}    XPATH://android.widget.TextView[@text="TIẾP TỤC"]
+${BUTTON_VRF_CODE_TIEP_TUC}    XPATH://android.widget.Button[@text="TIẾP TỤC"]
+${LABEL_CONFIRM_VRF_CODE_SEND}    XPATH://android.widget.TextView[@text='Một tin nhắn chứa mã xác thực đã gửi đến 0919572109']

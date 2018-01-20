@@ -1,3 +1,5 @@
 *** Variables ***
-${BUTTON_KHAM_PHA_NGAY}    XPATH:/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.TextView
-${BUTTON_TIEP_TUC}    XPATH://
+${BUTTON_KHAM_PHA_NGAY}    XPATH://android.widget.TextView[@text='Khám phá ngay']
+${BUTTON_TIEP_TUC}    XPATH://android.widget.TextView[@text='Tiếp tục']
+${BUTTON_BAT_DAU_NGAY}    XPATH://android.widget.TextView[@text="Bắt đầu ngay"]
+${BUTTON_ALLOW_SEND_NOTI}    XPATH://android.widget.Button[@text="Allow"]

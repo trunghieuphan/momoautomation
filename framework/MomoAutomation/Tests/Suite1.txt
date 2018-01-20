@@ -12,5 +12,5 @@ Login
     Tap    ${BUTTON_KHAM_PHA_NGAY}    10
     Tap On Element N Times    ${BUTTON_TIEP_TUC}    5
     Tap    ${BUTTON_BAT_DAU_NGAY}    10
-    Tap    ${BUTTON_ALLOW_SEND_NOTI}
+    Tap    ${BUTTON_ALLOW_SEND_NOTI}    10
     Login With Phone Number    0919572109

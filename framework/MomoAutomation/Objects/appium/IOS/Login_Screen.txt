@@ -1,4 +1,5 @@
 *** Variables ***
 ${TXT_NHAP_SO_DT}    XPATH://XCUIElementTypeTextField
 ${BUTTON_LOGIN_TIEP_TUC}    XPATH://XCUIElementTypeButton[@name="TIẾP TỤC"]
-${BUTTON_VRF_CODE_TIEP_TUC}    XPATH://XCUIElementTypeButton[@name="TIẾP TỤC"]
+${BUTTON_VRF_CODE_TIEP_TUC}    XPATH:(//XCUIElementTypeButton[@name="TIẾP TỤC"])[2]
+${LABEL_CONFIRM_VRF_CODE_SEND}    XPATH://XCUIElementTypeStaticText[@value="Một tin nhắn chứa mã xác thực đã gửi đến 0919572109"]
