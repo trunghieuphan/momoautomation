@@ -11,3 +11,7 @@ Login With Phone Number
     Tap    ${BUTTON_VRF_CODE_TIEP_TUC}
     ${is_confirm_msg_shown_up}    Is Text Present    ${TEXT_VERIFICATION_CODE_SENT}
     Should Be True    ${is_confirm_msg_shown_up}
+
+Clean Up
+    Run Keyword If Any Tests Failed    Capture Screen Shot
+    Stop Driver

@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Start Driver    desired_capabilities=${DESIRED_CAPABILITIES}    implicit_wait=True
-Suite Teardown    Stop Driver
+Suite Teardown    Clean Up
 Library           ../Libraries/MomoAppiumLibrary/MomoAppiumLibrary.py
 Resource          ../Data/EXECUTION_INFO.txt
 Resource          ../Data/OBJECT_LOCATORS.txt
