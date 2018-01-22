@@ -6,6 +6,7 @@ Resource          ../Data/EXECUTION_INFO.txt
 Resource          ../Data/OBJECT_LOCATORS.txt
 Resource          ../Resources/apps/APPS_PATH.txt
 Resource          ../Keywords/Common_Keywords.txt
+Resource          ../Data/TEST_DATA.txt
 
 *** Test Cases ***
 Login
@@ -18,4 +19,4 @@ Login
     Comment    Xác nhận đồng ý cho phép gửi notification
     Tap    ${BUTTON_ALLOW_SEND_NOTI}
     Comment    Thực hiện login bằng một số đt
-    Login With Phone Number    0919572109
+    Login With Phone Number    ${PHONE_NUMBER}

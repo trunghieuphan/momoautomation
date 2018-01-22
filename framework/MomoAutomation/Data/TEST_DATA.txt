@@ -1,0 +1,2 @@
+*** Variables ***
+${PHONE_NUMBER}    0919572109

@@ -4,6 +4,8 @@ from appium.webdriver.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from selenium.common.exceptions import WebDriverException
+
 from datetime import datetime
 from robot.libraries.BuiltIn import BuiltIn
 import os.path
@@ -14,7 +16,6 @@ class MomoAppiumLibrary(object):
     ROBOT_LIBRARY_VERSION = '1.0.0'
     
     def __init__(self):
-        print 'Initializing...'
         self._LOCATOR_STRATEGIES = {
                                     'id'            : By.ID, 
                                     'name'          : By.NAME, 
@@ -46,7 +47,8 @@ class MomoAppiumLibrary(object):
         return self.driver.page_source
 
     def stop_driver(self):
-        self.driver.quit()
+        if(self.driver is not None):
+            self.driver.quit()
 
     def tap(self, locator, wait_time=None):    
         element = self._findElementWithWait(locator, wait_time)
@@ -65,10 +67,6 @@ class MomoAppiumLibrary(object):
     def get_text(self, locator, wait_time=None):    
         element = self._findElementWithWait(locator, wait_time)
         return element.text
-        
-    def wait_for_element(self, locator, time_out=30):
-        by, locatorVal = self._parse_locator(locator)
-        return WebDriverWait(self.driver, float(time_out)).until(expected_conditions.presence_of_element_located((by, locatorVal)))
                 
     def capture_screen_shot(self):
         outputdir = BuiltIn().get_variable_value('${OUTPUTDIR}')
@@ -78,6 +76,27 @@ class MomoAppiumLibrary(object):
         self.driver.save_screenshot(path)    
         print '*HTML* Screenshot <img src="'+ file_name +'"/>'
      
+    def is_text_present(self, text): 
+        return text in self.driver.page_source
+    
+    def is_element_present(self, locator, wait_time=None): 
+        try:
+            element = self._findElementWithWait(locator, wait_time)
+            return element is not None
+        except WebDriverException:
+            return False
+    
+    def find_element(self, locator, parent_element=None, wait_time=None):
+        if(parent_element):
+            by, locatorVal = self._parse_locator(locator)
+            return parent_element.find_element(by, locatorVal)
+        else:
+            return self._findElementWithWait(locator, wait_time)        
+        
+    def wait_for_element(self, locator, time_out=30):
+        by, locatorVal = self._parse_locator(locator)
+        return WebDriverWait(self.driver, float(time_out)).until(expected_conditions.presence_of_element_located((by, locatorVal)))
+        
     def _findElementWithWait(self, locator, wait_time=None):
         if type(locator) is str or type(locator) is unicode:
             by, locatorVal = self._parse_locator(locator)
@@ -90,7 +109,7 @@ class MomoAppiumLibrary(object):
         elif type(locator) is WebElement:
             raise RuntimeError('Find element from WebElement has not been supported.')     
         else:
-            raise RuntimeError('Locator should be String or WebElement') 
+            raise ValueError('Locator should be String or WebElement') 
 
     def _parse_locator(self, locator):
         '''Detect if this is an explicit locator strategy in form of locator_strategy : value'''
