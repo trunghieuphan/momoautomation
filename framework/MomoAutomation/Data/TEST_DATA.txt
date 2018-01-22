@@ -1,2 +1,3 @@
 *** Variables ***
 ${PHONE_NUMBER}    0919572109
+${TEXT_VERIFICATION_CODE_SENT}    Một tin nhắn chứa mã xác thực đã gửi đến ${PHONE_NUMBER}

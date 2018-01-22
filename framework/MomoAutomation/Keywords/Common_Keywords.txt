@@ -9,4 +9,5 @@ Login With Phone Number
     Enter Text    ${TXT_NHAP_SO_DT}    ${PHONE_NUMBER}
     Tap    ${BUTTON_LOGIN_TIEP_TUC}
     Tap    ${BUTTON_VRF_CODE_TIEP_TUC}
-    Wait For Element    ${LABEL_CONFIRM_VRF_CODE_SEND}
+    ${is_confirm_msg_shown_up}    Is Text Present    ${TEXT_VERIFICATION_CODE_SENT}
+    Should Be True    ${is_confirm_msg_shown_up}
