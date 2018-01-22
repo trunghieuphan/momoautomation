@@ -38,19 +38,35 @@ class MomoAppiumLibrary(object):
                 
         
     def start_driver(self, host='127.0.0.1', port='4723', desired_capabilities=None, implicit_wait=False, implicit_wait_time=10):
+        """Start driver on HTTP host (default is localhost) and port (default is Appium server port 4723).
+        
+        The ``desired_capabilities`` argument is the device configuration info to run test on, see https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md for details 
+        The ``implicit_wait`` argument if True will make the driver to wait in `implicit_wait_time` when it's looking for element.
+        The ``implicit_wait_time`` argument with default value is 10 seconds, is the waiting time to wait for an Element (UI Object) appears on screen 
+        """
         url = 'http://' + host + ':' + port + '/wd/hub'
         self.driver = webdriver.Remote(url, desired_capabilities)
         self.implicit_wait = implicit_wait
         self.implicit_wait_time = implicit_wait_time
     
     def get_page_source(self):
+        """Get the XML/JSON content which is the representation of UI Objects hierarchy of the current screen"""
         return self.driver.page_source
 
     def stop_driver(self):
         if(self.driver is not None):
             self.driver.quit()
+    
+    def tap(self, locator, wait_time=None): 
+        """Click on an Element which is identified by ``locator``
 
-    def tap(self, locator, wait_time=None):    
+        The ``locator`` argument should be provided in format locator_strategy:some_value
+
+        Examples:
+        | ID:the_object_id |
+        | NAME:the_object_name |
+        | XPATH:xpath_of_the_object |
+        """
         element = self._findElementWithWait(locator, wait_time)
         element.click()
         
@@ -96,6 +112,21 @@ class MomoAppiumLibrary(object):
     def wait_for_element(self, locator, time_out=30):
         by, locatorVal = self._parse_locator(locator)
         return WebDriverWait(self.driver, float(time_out)).until(expected_conditions.presence_of_element_located((by, locatorVal)))
+    
+    def swipe(self, orientation='right', percentage=65):
+        screen_size = self.driver.get_window_size()
+        start_x = end_x = start_y = end_y = 0
+        if(str(orientation).lower() == 'right'):
+            start_x = 0
+            start_y = end_y = int(screen_size['height'] / 2)
+            end_x = int(screen_size['width'] * percentage / 100)
+        elif(str(orientation).lower() == 'left'):
+            """step back 1px off-set from the right"""
+            start_x = screen_size['width'] - 1
+            end_x = int(screen_size['width'] * (100-65) / 100)
+            start_y = end_y = int(screen_size['height'] / 2)
+        self.driver.swipe(start_x, start_y, end_x, end_y)
+        
         
     def _findElementWithWait(self, locator, wait_time=None):
         if type(locator) is str or type(locator) is unicode:
@@ -112,7 +143,7 @@ class MomoAppiumLibrary(object):
             raise ValueError('Locator should be String or WebElement') 
 
     def _parse_locator(self, locator):
-        '''Detect if this is an explicit locator strategy in form of locator_strategy : value'''
+        """Detect if this is an explicit locator strategy in form of locator_strategy : value"""
         if(locator.find(':')) == -1:
             raise ValueError("Unable to handle locator '%s'." % locator)
         locatorKey = locator[: locator.find(':')].strip().lower()

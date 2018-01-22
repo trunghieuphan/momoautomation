@@ -13,5 +13,6 @@ Login With Phone Number
     Should Be True    ${is_confirm_msg_shown_up}
 
 Clean Up
+    Run Keyword If Any Tests Failed    Sleep    2s    Capture Screen Shot run so fast, sometime happen before error screen show up
     Run Keyword If Any Tests Failed    Capture Screen Shot
     Stop Driver
