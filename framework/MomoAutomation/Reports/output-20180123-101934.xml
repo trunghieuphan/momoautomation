@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180123 10:19:34.153" generator="Robot 3.0.2 (Python 2.7.14 on win32)">
+<suite source="F:\robot\momoautomation\framework\MomoAutomation" id="s1" name="MomoAutomation">
+<suite source="F:\robot\momoautomation\framework\MomoAutomation\Tests" id="s1-s1" name="Tests">
+<suite source="F:\robot\momoautomation\framework\MomoAutomation\Tests\Suite1.txt" id="s1-s1-s1" name="Suite1">
+<kw type="setup" name="Start Driver" library="MomoAppiumLibrary">
+<doc>Start driver on HTTP host (default is localhost) and port (default is Appium server port 4723).</doc>
+<arguments>
+<arg>desired_capabilities=${DESIRED_CAPABILITIES}</arg>
+<arg>implicit_wait=True</arg>
+</arguments>
+<status status="PASS" endtime="20180123 10:19:49.424" starttime="20180123 10:19:34.243"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Login">
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click button "Khám phá ngay"</arg>
+</arguments>
+<status status="PASS" endtime="20180123 10:19:49.424" starttime="20180123 10:19:49.424"></status>
+</kw>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${BUTTON_KHAM_PHA_NGAY}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 10:19:57.361" starttime="20180123 10:19:49.424"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click "Tiếp tục" 5 lần để lướt qua các màn hình giới thiệu</arg>
+</arguments>
+<status status="PASS" endtime="20180123 10:19:57.361" starttime="20180123 10:19:57.361"></status>
+</kw>
+<kw name="Tap On Element N Times" library="Common_Keywords">
+<arguments>
+<arg>${BUTTON_TIEP_TUC}</arg>
+<arg>5</arg>
+</arguments>
+<kw name="Wait For Element" library="MomoAppiumLibrary">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20180123 10:20:27.438" level="FAIL">TimeoutException: Message: 
+</msg>
+<status status="FAIL" endtime="20180123 10:20:27.438" starttime="20180123 10:19:57.361"></status>
+</kw>
+<status status="FAIL" endtime="20180123 10:20:27.438" starttime="20180123 10:19:57.361"></status>
+</kw>
+<status status="FAIL" endtime="20180123 10:20:27.438" critical="yes" starttime="20180123 10:19:49.424">TimeoutException: Message: 
+</status>
+</test>
+<kw type="teardown" name="Clean Up" library="Common_Keywords">
+<kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if one or more tests failed.</doc>
+<arguments>
+<arg>Sleep</arg>
+<arg>2s</arg>
+<arg>Capture Screen Shot run so fast, sometime happen before error screen show up</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+<arg>Capture Screen Shot run so fast, sometime happen before error screen show up</arg>
+</arguments>
+<msg timestamp="20180123 10:20:29.438" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20180123 10:20:29.438" level="INFO">Capture Screen Shot run so fast, sometime happen before error screen show up</msg>
+<status status="PASS" endtime="20180123 10:20:29.438" starttime="20180123 10:20:27.438"></status>
+</kw>
+<status status="PASS" endtime="20180123 10:20:29.438" starttime="20180123 10:20:27.438"></status>
+</kw>
+<kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if one or more tests failed.</doc>
+<arguments>
+<arg>Capture Screen Shot</arg>
+</arguments>
+<kw name="Capture Screen Shot" library="MomoAppiumLibrary">
+<msg timestamp="20180123 10:20:31.366" html="yes" level="INFO">Screenshot &lt;img src="2018_1_23_10_20_29.png"/&gt;</msg>
+<status status="PASS" endtime="20180123 10:20:31.366" starttime="20180123 10:20:29.438"></status>
+</kw>
+<status status="PASS" endtime="20180123 10:20:31.366" starttime="20180123 10:20:29.438"></status>
+</kw>
+<kw name="Stop Driver" library="MomoAppiumLibrary">
+<status status="PASS" endtime="20180123 10:20:34.355" starttime="20180123 10:20:31.366"></status>
+</kw>
+<status status="PASS" endtime="20180123 10:20:34.355" starttime="20180123 10:20:27.438"></status>
+</kw>
+<status status="FAIL" endtime="20180123 10:20:34.355" starttime="20180123 10:19:34.183"></status>
+</suite>
+<status status="FAIL" endtime="20180123 10:20:34.355" starttime="20180123 10:19:34.183"></status>
+</suite>
+<status status="FAIL" endtime="20180123 10:20:34.355" starttime="20180123 10:19:34.173"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="MomoAutomation" pass="0">MomoAutomation</stat>
+<stat fail="1" id="s1-s1" name="Tests" pass="0">MomoAutomation.Tests</stat>
+<stat fail="1" id="s1-s1-s1" name="Suite1" pass="0">MomoAutomation.Tests.Suite1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20180123 10:20:27.438" level="ERROR">Calling method 'end_keyword' of listener 'F:\robot\momoautomation\framework\MomoAutomation\Libraries\Listeners\MomoAppiumLibraryListener.py' failed: UnicodeEncodeError: 'ascii' codec can't encode character u'\u1ebf' in position 41: ordinal not in range(128)</msg>
+<msg timestamp="20180123 10:20:27.438" level="ERROR">Calling method 'end_keyword' of listener 'F:\robot\momoautomation\framework\MomoAutomation\Libraries\Listeners\MomoAppiumLibraryListener.py' failed: UnicodeEncodeError: 'ascii' codec can't encode character u'\u1ebf' in position 41: ordinal not in range(128)</msg>
+</errors>
+</robot>
