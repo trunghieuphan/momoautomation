@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180123 14:32:48.129" generator="Robot 3.0.2 (Python 2.7.14 on win32)">
+<suite source="F:\robot\momoautomation\framework\MomoAutomation" id="s1" name="MomoAutomation">
+<suite source="F:\robot\momoautomation\framework\MomoAutomation\Tests" id="s1-s1" name="Tests">
+<suite source="F:\robot\momoautomation\framework\MomoAutomation\Tests\Suite1.txt" id="s1-s1-s1" name="Suite1">
+<kw type="setup" name="Start Driver" library="MomoAppiumLibrary">
+<doc>Start driver on HTTP host (default is localhost) and port (default is Appium server port 4723).</doc>
+<arguments>
+<arg>desired_capabilities=${DESIRED_CAPABILITIES}</arg>
+<arg>implicit_wait=True</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:05.487" starttime="20180123 14:32:48.220"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Login">
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click button "Khám phá ngay"</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:05.488" starttime="20180123 14:33:05.488"></status>
+</kw>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${BUTTON_KHAM_PHA_NGAY}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:10.694" starttime="20180123 14:33:05.488"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click "Tiếp tục" 5 lần để lướt qua các màn hình giới thiệu</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:10.695" starttime="20180123 14:33:10.695"></status>
+</kw>
+<kw name="Tap On Element N Times" library="Common_Keywords">
+<arguments>
+<arg>${BUTTON_TIEP_TUC}</arg>
+<arg>5</arg>
+</arguments>
+<kw name="Wait For Element" library="MomoAppiumLibrary">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:11.976" starttime="20180123 14:33:10.696"></status>
+</kw>
+<kw name="Repeat Keyword" library="BuiltIn">
+<doc>Executes the specified keyword multiple times.</doc>
+<arguments>
+<arg>${times}</arg>
+<arg>Tap</arg>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20180123 14:33:11.977" level="INFO">Repeating keyword, round 1/5.</msg>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:12.156" starttime="20180123 14:33:11.977"></status>
+</kw>
+<msg timestamp="20180123 14:33:12.156" level="INFO">Repeating keyword, round 2/5.</msg>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:13.612" starttime="20180123 14:33:12.156"></status>
+</kw>
+<msg timestamp="20180123 14:33:13.612" level="INFO">Repeating keyword, round 3/5.</msg>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:15.055" starttime="20180123 14:33:13.612"></status>
+</kw>
+<msg timestamp="20180123 14:33:15.055" level="INFO">Repeating keyword, round 4/5.</msg>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:16.519" starttime="20180123 14:33:15.055"></status>
+</kw>
+<msg timestamp="20180123 14:33:16.520" level="INFO">Repeating keyword, round 5/5.</msg>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:17.947" starttime="20180123 14:33:16.520"></status>
+</kw>
+<status status="PASS" endtime="20180123 14:33:17.947" starttime="20180123 14:33:11.976"></status>
+</kw>
+<status status="PASS" endtime="20180123 14:33:17.948" starttime="20180123 14:33:10.695"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click "Bắt đầu ngay" để vào màn hình đăng nhập</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:17.948" starttime="20180123 14:33:17.948"></status>
+</kw>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${BUTTON_BAT_DAU_NGAY}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:19.363" starttime="20180123 14:33:17.948"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Xác nhận đồng ý cho phép gửi notification</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:19.364" starttime="20180123 14:33:19.364"></status>
+</kw>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${BUTTON_ALLOW_SEND_NOTI}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:23.531" starttime="20180123 14:33:19.364"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Thực hiện login bằng một số đt</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:23.532" starttime="20180123 14:33:23.531"></status>
+</kw>
+<kw name="Login With Phone Number" library="Common_Keywords">
+<arguments>
+<arg>${PHONE_NUMBER}</arg>
+</arguments>
+<kw name="Enter Text" library="MomoAppiumLibrary">
+<arguments>
+<arg>${TXT_NHAP_SO_DT}</arg>
+<arg>${PHONE_NUMBER}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:28.490" starttime="20180123 14:33:23.533"></status>
+</kw>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${BUTTON_LOGIN_TIEP_TUC}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:29.615" starttime="20180123 14:33:28.491"></status>
+</kw>
+<kw name="Tap" library="MomoAppiumLibrary">
+<doc>Click on an Element which is identified by ``locator``</doc>
+<arguments>
+<arg>${BUTTON_VRF_CODE_TIEP_TUC}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:31.031" starttime="20180123 14:33:29.615"></status>
+</kw>
+<kw name="Is Text Present" library="MomoAppiumLibrary">
+<arguments>
+<arg>${TEXT_VERIFICATION_CODE_SENT}</arg>
+</arguments>
+<assign>
+<var>${is_confirm_msg_shown_up}</var>
+</assign>
+<msg timestamp="20180123 14:33:31.146" level="INFO">${is_confirm_msg_shown_up} = True</msg>
+<status status="PASS" endtime="20180123 14:33:31.146" starttime="20180123 14:33:31.031"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${is_confirm_msg_shown_up}</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:31.147" starttime="20180123 14:33:31.146"></status>
+</kw>
+<status status="PASS" endtime="20180123 14:33:31.147" starttime="20180123 14:33:23.532"></status>
+</kw>
+<status status="PASS" endtime="20180123 14:33:31.147" critical="yes" starttime="20180123 14:33:05.487"></status>
+</test>
+<kw type="teardown" name="Clean Up" library="Common_Keywords">
+<kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if one or more tests failed.</doc>
+<arguments>
+<arg>Sleep</arg>
+<arg>2s</arg>
+<arg>Capture Screen Shot run so fast, sometime happen before error screen show up</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:31.149" starttime="20180123 14:33:31.148"></status>
+</kw>
+<kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if one or more tests failed.</doc>
+<arguments>
+<arg>Capture Screen Shot</arg>
+</arguments>
+<status status="PASS" endtime="20180123 14:33:31.150" starttime="20180123 14:33:31.149"></status>
+</kw>
+<kw name="Stop Driver" library="MomoAppiumLibrary">
+<status status="PASS" endtime="20180123 14:33:34.207" starttime="20180123 14:33:31.150"></status>
+</kw>
+<status status="PASS" endtime="20180123 14:33:34.207" starttime="20180123 14:33:31.148"></status>
+</kw>
+<status status="PASS" endtime="20180123 14:33:34.208" starttime="20180123 14:32:48.159"></status>
+</suite>
+<status status="PASS" endtime="20180123 14:33:34.209" starttime="20180123 14:32:48.158"></status>
+</suite>
+<status status="PASS" endtime="20180123 14:33:34.210" starttime="20180123 14:32:48.141"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="MomoAutomation" pass="1">MomoAutomation</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="1">MomoAutomation.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="Suite1" pass="1">MomoAutomation.Tests.Suite1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

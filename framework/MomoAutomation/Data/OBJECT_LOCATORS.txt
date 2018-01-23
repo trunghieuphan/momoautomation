@@ -1,3 +1,2 @@
 *** Settings ***
-Resource          ../Objects/${ENGINE}/${PLATFORM}/Welcome_Screen.txt
-Resource          ../Objects/${ENGINE}/${PLATFORM}/Login_Screen.txt
+Resource          ../Objects/${ENGINE}/${PLATFORM}/OBJECTS.txt

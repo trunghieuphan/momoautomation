@@ -1,0 +1,3 @@
+*** Settings ***
+Resource          Android_Login_Screen.txt
+Resource          Android_Welcome_Screen.txt

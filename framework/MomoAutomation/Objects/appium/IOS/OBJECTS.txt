@@ -1,0 +1,3 @@
+*** Settings ***
+Resource          Login_Screen.txt
+Resource          Welcome_Screen.txt
