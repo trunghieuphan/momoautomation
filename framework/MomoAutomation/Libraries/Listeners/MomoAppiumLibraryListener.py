@@ -7,4 +7,4 @@ def end_keyword(name, attrs):
     if attrs['status'] == 'FAIL':
         for arg in attrs['args']:
             if(arg.startswith('${') and arg.endswith('}')):
-                logger.info(arg + ' = ' + str(BuiltIn().get_variable_value(arg)))
+                logger.info(str(arg) + ' = ' + str(BuiltIn().get_variable_value(arg)))
