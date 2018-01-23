@@ -113,20 +113,38 @@ class MomoAppiumLibrary(object):
         by, locatorVal = self._parse_locator(locator)
         return WebDriverWait(self.driver, float(time_out)).until(expected_conditions.presence_of_element_located((by, locatorVal)))
     
-    def swipe(self, orientation='right', percentage=65):
+    def swipe_right(self, percentage=65, duration=None):
         screen_size = self.driver.get_window_size()
-        start_x = end_x = start_y = end_y = 0
-        if(str(orientation).lower() == 'right'):
-            start_x = 0
-            start_y = end_y = int(screen_size['height'] / 2)
-            end_x = int(screen_size['width'] * percentage / 100)
-        elif(str(orientation).lower() == 'left'):
-            """step back 1px off-set from the right"""
-            start_x = screen_size['width'] - 1
-            end_x = int(screen_size['width'] * (100-65) / 100)
-            start_y = end_y = int(screen_size['height'] / 2)
-        self.driver.swipe(start_x, start_y, end_x, end_y)
+        start_x = 0
+        start_y = end_y = int(screen_size['height'] / 2)
+        end_x = int(screen_size['width'] * percentage / 100)
+        self.swipe(start_x, start_y, end_x, end_y, duration)
+     
+    def swipe_left(self, percentage=65, duration=None):       
+        screen_size = self.driver.get_window_size()
+        """step back 1px off-set from the right"""
+        start_x = screen_size['width'] - 1
+        end_x = int(screen_size['width'] * (100-percentage) / 100)
+        start_y = end_y = int(screen_size['height'] / 2)    
+        self.swipe(start_x, start_y, end_x, end_y, duration)    
         
+    def swipe_down(self, percentage=50, duration=None):    
+        screen_size = self.driver.get_window_size()
+        start_x = end_x = int(screen_size['width']/2)   
+        start_y = 1
+        end_y = int(screen_size['height'] * percentage / 100)
+        self.swipe(start_x, start_y, end_x, end_y, duration)
+        
+    def swipe_up(self, percentage=50, duration=None): 
+        screen_size = self.driver.get_window_size()
+        start_x = end_x = int(screen_size['width'] / 2)
+        """Step up 1px off-set"""
+        start_y = screen_size['height']-1
+        end_y = int(screen_size['height'] * percentage/100)
+        self.swipe(start_x, start_y, end_x, end_y, duration)
+     
+    def swipe(self, start_x, start_y, end_x, end_y, duration=None):   
+        self.driver.swipe(start_x, start_y, end_x, end_y, duration)
         
     def _findElementWithWait(self, locator, wait_time=None):
         if type(locator) is str or type(locator) is unicode:
