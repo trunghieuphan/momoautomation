@@ -14,6 +14,8 @@ class MomoAppiumLibrary(object):
     
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = '1.0.0'
+    ENGINE_NAME = 'appium'
+    LOCATOR_SEPARATORS = [':', '=']
     
     def __init__(self):
         self._LOCATOR_STRATEGIES = {
@@ -162,10 +164,18 @@ class MomoAppiumLibrary(object):
 
     def _parse_locator(self, locator):
         """Detect if this is an explicit locator strategy in form of locator_strategy : value"""
-        if(locator.find(':')) == -1:
+        separator_index = -1
+        indexes = []
+        for sep in self.LOCATOR_SEPARATORS:
+            index = locator.find(sep)
+            if(index != -1):
+                indexes.append(index)
+        if len(indexes) > 0:   
+            separator_index = min(indexes)    
+        if(separator_index == -1):
             raise ValueError("Unable to handle locator '%s'." % locator)
-        locatorKey = locator[: locator.find(':')].strip().lower()
-        locatorVal = locator[locator.find(':')+1 :].strip()
+        locatorKey = locator[: separator_index].strip().lower()
+        locatorVal = locator[separator_index+1 :].strip()
         if(self._LOCATOR_STRATEGIES.has_key(locatorKey) == False):
             raise ValueError("Unable to handle locator '%s'." % locatorKey)
         by = self._LOCATOR_STRATEGIES[locatorKey]    
