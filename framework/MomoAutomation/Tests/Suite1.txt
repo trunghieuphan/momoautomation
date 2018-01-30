@@ -1,12 +1,12 @@
 *** Settings ***
 Suite Setup       Start Driver    desired_capabilities=${DESIRED_CAPABILITIES}    implicit_wait=True
 Suite Teardown    Clean Up
-Library           ../Libraries/MomoAppiumLibrary/MomoAppiumLibrary.py
 Resource          ../Data/TEST_DATA.txt
 Resource          ../Data/EXECUTION_INFO.txt
 Resource          ../Data/OBJECT_LOCATORS.txt
 Resource          ../Resources/apps/APPS_PATH.txt
 Resource          ../Keywords/Common_Keywords.txt
+Library           ../Libraries/MobileAutomation/MobileAutomationLibrary.py
 
 *** Test Cases ***
 Login
