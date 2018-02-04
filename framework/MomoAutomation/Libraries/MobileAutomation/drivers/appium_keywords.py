@@ -14,6 +14,8 @@ class AppiumKeywords(object):
     
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = '1.0.0'
+    ENGINE_NAME = 'appium'
+    LOCATOR_SEPARATORS = [':', '=']
     
     def __init__(self):
         self._LOCATOR_STRATEGIES = {
@@ -77,7 +79,7 @@ class AppiumKeywords(object):
         element = self._findElementWithWait(locator, wait_time)
         element.click()
     
-    @keyword    
+    @keyword  
     def enter_text(self, locator, text, append=False, wait_time=None):
         element = self._findElementWithWait(locator, wait_time)  
         if(append):
@@ -89,12 +91,12 @@ class AppiumKeywords(object):
         element = self._findElementWithWait(locator, wait_time)  
         element.clear()
            
-    @keyword            
+    @keyword          
     def get_text(self, locator, wait_time=None):    
         element = self._findElementWithWait(locator, wait_time)
         return element.text
      
-    @keyword            
+    @keyword           
     def capture_screen_shot(self):
         outputdir = BuiltIn().get_variable_value('${OUTPUTDIR}')
         current = datetime.now()
@@ -103,11 +105,11 @@ class AppiumKeywords(object):
         self.driver.save_screenshot(path)    
         print '*HTML* Screenshot <img src="'+ file_name +'"/>'
     
-    @keyword 
+    @keyword
     def is_text_present(self, text): 
         return text in self.driver.page_source
     
-    @keyword
+    @keyword   
     def is_element_present(self, locator, wait_time=None): 
         try:
             element = self._findElementWithWait(locator, wait_time)
@@ -123,7 +125,7 @@ class AppiumKeywords(object):
         else:
             return self._findElementWithWait(locator, wait_time)        
     
-    @keyword    
+    @keyword  
     def wait_for_element(self, locator, time_out=30):
         by, locatorVal = self._parse_locator(locator)
         return WebDriverWait(self.driver, float(time_out)).until(expected_conditions.presence_of_element_located((by, locatorVal)))
@@ -136,7 +138,7 @@ class AppiumKeywords(object):
         end_x = int(screen_size['width'] * percentage / 100)
         self.swipe(start_x, start_y, end_x, end_y, duration)
     
-    @keyword
+    @keyword   
     def swipe_left(self, percentage=65, duration=None):       
         screen_size = self.driver.get_window_size()
         """step back 1px off-set from the right"""
@@ -145,7 +147,7 @@ class AppiumKeywords(object):
         start_y = end_y = int(screen_size['height'] / 2)    
         self.swipe(start_x, start_y, end_x, end_y, duration)    
     
-    @keyword    
+    @keyword
     def swipe_down(self, percentage=50, duration=None):    
         screen_size = self.driver.get_window_size()
         start_x = end_x = int(screen_size['width']/2)   
@@ -153,7 +155,7 @@ class AppiumKeywords(object):
         end_y = int(screen_size['height'] * percentage / 100)
         self.swipe(start_x, start_y, end_x, end_y, duration)
       
-    @keyword  
+    @keyword
     def swipe_up(self, percentage=50, duration=None): 
         screen_size = self.driver.get_window_size()
         start_x = end_x = int(screen_size['width'] / 2)
@@ -161,6 +163,7 @@ class AppiumKeywords(object):
         start_y = screen_size['height']-1
         end_y = int(screen_size['height'] * percentage/100)
         self.swipe(start_x, start_y, end_x, end_y, duration)
+    
     @keyword
     def swipe(self, start_x, start_y, end_x, end_y, duration=None):   
         self.driver.swipe(start_x, start_y, end_x, end_y, duration)
@@ -181,10 +184,18 @@ class AppiumKeywords(object):
 
     def _parse_locator(self, locator):
         """Detect if this is an explicit locator strategy in form of locator_strategy : value"""
-        if(locator.find(':')) == -1:
+        separator_index = -1
+        indexes = []
+        for sep in self.LOCATOR_SEPARATORS:
+            index = locator.find(sep)
+            if(index != -1):
+                indexes.append(index)
+        if len(indexes) > 0:   
+            separator_index = min(indexes)    
+        if(separator_index == -1):
             raise ValueError("Unable to handle locator '%s'." % locator)
-        locatorKey = locator[: locator.find(':')].strip().lower()
-        locatorVal = locator[locator.find(':')+1 :].strip()
+        locatorKey = locator[: separator_index].strip().lower()
+        locatorVal = locator[separator_index+1 :].strip()
         if(self._LOCATOR_STRATEGIES.has_key(locatorKey) == False):
             raise ValueError("Unable to handle locator '%s'." % locatorKey)
         by = self._LOCATOR_STRATEGIES[locatorKey]    
