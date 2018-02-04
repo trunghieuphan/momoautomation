@@ -1,6 +1,6 @@
 *** Variables ***
-${PLATFORM}       Android_OR_Ios
-${ENGINE}         Appium
-&{APPIUM_ANDROID_CAPS}    device=Android    deviceName=Android    platformName=Android    platformVersion=6.0    udid=WUJ01M7MN0    app=${ANDROID_APP_FILE_PATH}
-&{APPIUM_IOS_CAPS}    deviceName=5s Iphone    platformName=iOS    platformVersion=11.2.1    udid=37984baac6ff2598b162ed88e7015cd889e200d5    app=${IOS_APP_FILE_PATH}
-${DESIRED_CAPABILITIES}    ${${ENGINE}_${PLATFORM}_CAPS}
+${PLATFORM}       IOS
+${ENGINE}         APPIUM
+&{APPIUM_ANDROID_CAPABILITIES}    device=Android    deviceName=Android    platformName=Android    platformVersion=6.0    udid=WUJ01M7MN0    app=${ANDROID_APP_FILE_PATH}
+&{APPIUM_IOS_CAPABILITIES}    deviceName=5s Iphone    platformName=iOS    platformVersion=11.2.1    udid=37984baac6ff2598b162ed88e7015cd889e200d5    app=${IOS_APP_FILE_PATH}
+${DESIRED_CAPABILITIES}    ${${ENGINE}_${PLATFORM}_CAPABILITIES}
