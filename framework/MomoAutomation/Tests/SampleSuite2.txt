@@ -1,0 +1,21 @@
+*** Settings ***
+Resource          ../Data/EXECUTION_INFO.txt
+Resource          ../Resources/apps/APPS_PATH.txt
+Library           ../Libraries/MobileAutomation/MobileAutomationLibrary.py    engine_name=calabash
+
+*** Test Cases ***
+RemoteCalabash
+    Start Driver    desired_capabilities=&{CALABASH_IOS_CAPABILITIES}
+    Wait For Element    UITextField index:0
+    ${page_source}=    Get Page Source
+    Tap    UITextField index:1
+    Enter Text    UITextField index:0    Hello Hieu
+    ${recent_text}=    Get Text    UITextField index:0
+    ${is_element_present}=    Is Element Present    UITextField index:0
+    ${is_text_present}    Is Text Present    CalTextField
+    Swipe Right
+    Swipe Left
+    Swipe Down
+    Swipe Up
+    Capture Screen Shot
+    Stop Driver

@@ -40,14 +40,14 @@ class CalabashKeywords(object):
         if(wait_time):
             self.wait_for_element(locator, wait_time)
         if(append is False):
-            self._get_library().run_keyword('calabash_clear_text', args=[], kwargs={}) 
-        self._get_library().run_keyword('enter_text', args=[locator, text], kwargs={})   
+            self._get_library().run_keyword('calabash_clear_text', args=[locator], kwargs={}) 
+        self._get_library().run_keyword('calabash_enter_text', args=[locator, text], kwargs={})   
 
     @keyword       
     def clear_text(self, locator, wait_time=None):
         if(wait_time):
             self.wait_for_element(locator, wait_time)
-        self._get_library().run_keyword('calabash_clear_text', args=[], kwargs={})
+        self._get_library().run_keyword('calabash_clear_text', args=[locator], kwargs={})
             
     @keyword              
     def get_text(self, locator, wait_time=None):    
@@ -61,9 +61,9 @@ class CalabashKeywords(object):
         current = datetime.now()
         file_name = '%d_%d_%d_%d_%d_%d.png' % (current.year, current.month, current.day, current.hour, current.minute, current.second)  
         path = os.path.join(outputdir, file_name)
-        self.driver.save_screenshot(path)
-        self._get_library().run_keyword('capture_screen_shot', args=[file_name], kwargs={})
-        print '*HTML* Screenshot <img src="'+ file_name +'"/>'
+        saved_image_path = self._get_library().run_keyword('calabash_capture_screen_shot', args=[path], kwargs={})
+        saved_image_name = os.path.basename(saved_image_path)
+        print '*HTML* Screenshot <img src="'+ saved_image_name +'"/>'
     
     @keyword 
     def is_text_present(self, text): 
@@ -85,40 +85,35 @@ class CalabashKeywords(object):
     def swipe_right(self, percentage=65, duration=None):
         screen_size = self._get_screen_size()
         start_x = 0
-        start_y = end_y = int(screen_size['height'] / 2)
-        end_x = int(screen_size['width'] * percentage / 100)
-        self.swipe(start_x, start_y, end_x, end_y, duration)
-        
+        start_y = int(screen_size['height'] / 2)
+        self._get_library().run_keyword('calabash_swipe', args=['right', start_x, start_y], kwargs={})
     
     @keyword
     def swipe_left(self, percentage=65, duration=None):       
         screen_size = self._get_screen_size()
         """step back 1px off-set from the right"""
         start_x = screen_size['width'] - 1
-        end_x = int(screen_size['width'] * (100-percentage) / 100)
-        start_y = end_y = int(screen_size['height'] / 2)    
-        self.swipe(start_x, start_y, end_x, end_y, duration)  
+        start_y = int(screen_size['height'] / 2)    
+        self._get_library().run_keyword('calabash_swipe', args=['left', start_x, start_y], kwargs={})
     
     @keyword
     def swipe_down(self, percentage=50, duration=None):    
         screen_size = self._get_screen_size()
-        start_x = end_x = int(screen_size['width']/2)   
+        start_x = int(screen_size['width']/2)   
         start_y = 1
-        end_y = int(screen_size['height'] * percentage / 100)
-        self.swipe(start_x, start_y, end_x, end_y, duration)
+        self._get_library().run_keyword('calabash_swipe', args=['down', start_x, start_y], kwargs={})
     
     @keyword
     def swipe_up(self, percentage=50, duration=None): 
         screen_size = self._get_screen_size()
-        start_x = end_x = int(screen_size['width'] / 2)
+        start_x = int(screen_size['width'] / 2)
         """Step up 1px off-set"""
         start_y = screen_size['height']-1
-        end_y = int(screen_size['height'] * percentage/100)
-        self.swipe(start_x, start_y, end_x, end_y, duration)
+        self._get_library().run_keyword('calabash_swipe', args=['up', start_x, start_y], kwargs={})
     
     @keyword
     def swipe(self, start_x, start_y, end_x, end_y, duration=None):   
-        pass
+        raise RuntimeError("swipe keyword has not been supported by Calabash engine")
         
     def _findElementWithWait(self, locator, wait_time=None):
         pass 
